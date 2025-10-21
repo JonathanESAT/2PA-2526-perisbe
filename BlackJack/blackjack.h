@@ -12,11 +12,18 @@ enum Outcome {
     kBlackJack
 };
 
-struct Table{
-    Deck deck;
-    Player player;
-    Crupier crupier;
+struct Blackjack{
+    Deck deck_;
+    Player player_;
+    Crupier crupier_;
     int base_bet;
+
+    Blackjack(Deck deck, Player player, Crupier crupier);
 };
+
+
+Outcome ResolveOutcome(const Hand& player, const Hand& dealer);
+
+int Payout(int bet, bool player_has_blackjack, Outcome o);
 
 #endif

@@ -11,14 +11,14 @@ enum Colors{
   kColor_Green
 };
 
-struct Player{
+struct PlayerData{
   static const int kPieceNum = 4;
 
   Colors color_;
   
   Piece piece_[kPieceNum];
 
-  Player(Colors color);
+  PlayerData(Colors color);
   bool PiecesAtHome();
   int CountPiecesOnBox(int box);
 };

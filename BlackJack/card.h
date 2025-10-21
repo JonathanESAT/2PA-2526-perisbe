@@ -27,9 +27,12 @@ enum Rank {
 
 
 struct Card{
-    Suit suit;
-    Rank rank;
+    Suit suit_;
+    Rank rank_;
+    Card() : suit_(kHearts), rank_(kR2) {}
 };
+
+int CardBaseValue(const Card& c);
 
 
 #endif

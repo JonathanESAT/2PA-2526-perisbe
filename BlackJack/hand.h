@@ -10,5 +10,16 @@ struct Hand{
     bool finished;
 };
 
+void HandInit(Hand& h);
+
+bool HandAddCard(Hand& h, const Card& c);
+
+int HandBestValue(const Hand& h);
+
+bool HandIsBlackjack(const Hand& h);
+
+bool HandIsBust(const Hand& h);
+
+bool HandIsSoft(const Hand& h);
 
 #endif
