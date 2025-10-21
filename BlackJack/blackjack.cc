@@ -51,3 +51,110 @@ float Payout(float bet, bool player_has_blackjack, Outcome o){
 
     return 0.0f;
 }
+
+float PlayRoundWith(Deck& deck, Player& player, Crupier& crupier, float base_bet) {
+
+  if (deck.size - deck.top < 52) {
+    DeckShuffle(deck);
+  }
+
+
+  HandInit(player.hands[0]);
+  HandInit(crupier.hand);
+  player.hand_count = 1;
+
+  float bet = base_bet;
+  Card c;
+
+ 
+  DeckDraw(deck, c); HandAddCard(player.hands[0], c);
+  DeckDraw(deck, c); HandAddCard(crupier.hand,    c);
+  DeckDraw(deck, c); HandAddCard(player.hands[0], c);
+  DeckDraw(deck, c); HandAddCard(crupier.hand,    c);
+
+
+  bool pBJ = HandIsBlackjack(player.hands[0]);
+  bool dBJ = HandIsBlackjack(crupier.hand);
+  if (pBJ || dBJ) {
+    Outcome o = ResolveOutcome(player.hands[0], crupier.hand);
+    float delta = Payout(bet, pBJ, o);
+    player.balance += delta;
+    return delta;
+  }
+
+ 
+  while (HandBestValue(player.hands[0]) < 17) {
+    if (!DeckDraw(deck, c)) break;
+    HandAddCard(player.hands[0], c);
+    if (HandIsBust(player.hands[0])) {
+      Outcome o = ResolveOutcome(player.hands[0], crupier.hand);
+      float delta = Payout(bet, false, o); 
+      player.balance += delta;
+      return delta;
+    }
+  }
+
+
+  DealerPlay(deck, crupier.hand);
+
+  
+  Outcome o = ResolveOutcome(player.hands[0], crupier.hand);
+  float delta = Payout(bet, false, o);
+  player.balance += delta;
+  return delta;
+}
+
+
+
+float PlayRound(Blackjack& g) {
+ 
+  if (g.deck_.size - g.deck_.top < 52) {
+    DeckShuffle(g.deck_);
+  }
+
+ 
+  HandInit(g.player_.hands[0]);
+  HandInit(g.crupier_.hand);
+  g.player_.hand_count = 1;
+
+  
+  float bet = g.base_bet;
+
+
+  Card c;
+  DeckDraw(g.deck_, c); HandAddCard(g.player_.hands[0], c);
+  DeckDraw(g.deck_, c); HandAddCard(g.crupier_.hand,    c);
+  DeckDraw(g.deck_, c); HandAddCard(g.player_.hands[0], c);
+  DeckDraw(g.deck_, c); HandAddCard(g.crupier_.hand,    c);
+
+
+  bool pBJ = HandIsBlackjack(g.player_.hands[0]);
+  bool dBJ = HandIsBlackjack(g.crupier_.hand);
+  if (pBJ || dBJ) {
+    Outcome o = ResolveOutcome(g.player_.hands[0], g.crupier_.hand);
+    float delta = Payout(bet, pBJ, o);
+    g.player_.balance += delta;
+    return delta;
+  }
+
+  
+  while (HandBestValue(g.player_.hands[0]) < 17) {
+    if (!DeckDraw(g.deck_, c)) break;
+    HandAddCard(g.player_.hands[0], c);
+    if (HandIsBust(g.player_.hands[0])) {
+      Outcome o = ResolveOutcome(g.player_.hands[0], g.crupier_.hand);
+      float delta = Payout(bet, false, o);
+      g.player_.balance += delta;
+      return delta;
+    }
+  }
+
+ 
+  DealerPlay(g.deck_, g.crupier_.hand);
+
+  
+  Outcome o = ResolveOutcome(g.player_.hands[0], g.crupier_.hand);
+  float delta = Payout(bet, false, o);
+  g.player_.balance += delta;
+  return delta;
+}

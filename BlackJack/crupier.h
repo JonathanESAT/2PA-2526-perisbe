@@ -10,7 +10,6 @@ struct Crupier{
     Hand hand;
 };
 
-
 void DealerPlay(Deck& deck, Hand& dealer);
 
 #endif

@@ -15,6 +15,8 @@ struct Deck{
     int top;
 };
 
+void DeckInit(Deck& d, int num_decks);
+
 void DeckShuffle(Deck& d);
 
 bool DeckDraw(Deck& d, Card& out_card);

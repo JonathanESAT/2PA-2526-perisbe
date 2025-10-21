@@ -1,10 +1,6 @@
 #include "card.h"
 
-Card::Card(Suit suit, Rank rank)
-    : suit_{suit}
-    , rank_{rank} {
 
-}
 
 int CardBaseValue (const Card& c){
 
