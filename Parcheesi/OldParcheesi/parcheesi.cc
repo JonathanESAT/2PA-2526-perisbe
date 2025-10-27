@@ -49,6 +49,8 @@ void Parcheesi::PlayTurn(){
   }
 }
 
+
+
 MovementOutput Parcheesi::ApplyMovement(int pieceIndex, int mov_num){
 
   if(pieceIndex < 0 || pieceIndex >= Player::kPieceNum) return kMovementOutput_NoMove;
