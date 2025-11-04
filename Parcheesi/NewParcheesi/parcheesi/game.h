@@ -2,13 +2,8 @@
 #ifndef PARCHEESI_GAME_H
 #define PARCHEESI_GAME_H
 
-#include "iparcheesi.h"
-
-class IPlayer {
-  public:
-    virtual int DecideMove(const IParcheesi& parcheesi, int dice_roll) const = 0;
-    virtual ~IPlayer() = default;
-};
+#include "interface/iparcheesi.h"
+#include "interface/iplayer.h"
 
 class Game {
   public:
