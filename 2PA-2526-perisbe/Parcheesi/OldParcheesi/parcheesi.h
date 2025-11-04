@@ -26,7 +26,7 @@ struct Parcheesi{
   int repeated_sixes_;
 
   Colors current_player_;   
-  Player player_[kMaxPlayers];
+  PlayerData player_[kMaxPlayers];
 
   Parcheesi(int num_players);
 
@@ -36,5 +36,10 @@ struct Parcheesi{
   MovementOutput ApplyMovement(int pieceIndex, int roll_dice);
 };
 
+
+int DecideMovement(const Parcheesi& p){
+  p.CountPiecesOnBox(1);
+  p.NextPlayer();
+}
+
 #endif // __PARCHEESI_H_ 
-l
