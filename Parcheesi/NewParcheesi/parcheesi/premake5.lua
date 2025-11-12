@@ -23,8 +23,8 @@ project "Parcheesi"
    language "C++"
    cppdialect "C++17"
    --links {"ParcheesiJPlayer","ParcheesiJBoard", "PlayerJonathan.lib"}
-   links {"ParcheesiJPlayer", "ParcheesiJBoard", "zagerfe_ParcheesiPlayer"}
-   files { "JParcheesi.cc", "zagerfe_player.h" }
+   links {"ParcheesiJPlayer", "ParcheesiJBoard", "PlayerArnau"}
+   files { "JParcheesi.cc", "PlayerArnau.h" }
 
    files
    {

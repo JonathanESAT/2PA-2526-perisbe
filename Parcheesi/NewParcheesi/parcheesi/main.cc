@@ -2,6 +2,8 @@
 #include "jplayer.h"    
 #include "jparcheesi.h" 
 #include <windows.h>
+#include "PlayerArnau.h"
+
 
 int main() {
 
@@ -10,7 +12,7 @@ int main() {
   JParcheesi board;
 
   
-  JPlayer p0; 
+  PlayerArnau p0; 
   JPlayer p1; 
   JPlayer p2; 
   JPlayer p3; 
