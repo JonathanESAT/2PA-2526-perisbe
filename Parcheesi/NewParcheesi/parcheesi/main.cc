@@ -10,10 +10,10 @@ int main() {
   JParcheesi board;
 
   
-  JPlayer p0; 
-  JPlayer p1; 
-  JPlayer p2; 
-  JPlayer p3; 
+  JPlayer p0(0); 
+  JPlayer p1(1); 
+  JPlayer p2(2); 
+  JPlayer p3(3); 
 
   
   const IPlayer* players[4] = { &p0, &p1, &p2, &p3 };
