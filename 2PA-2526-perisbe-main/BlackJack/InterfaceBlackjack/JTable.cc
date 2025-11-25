@@ -178,8 +178,64 @@ void JTable::ShuffleDeck(){
     std::shuffle(deck_.begin(), deck_.end(), rand);
 }
 
-JTable::Result JTable::ApplyPlayerAction(int player_index,int hand_index,Action action){
+int JTable::GetCardValue(Card card){
+  Value value = card.value_;
+  
 
+  switch (value)
+    {
+    case ITable::Value::ACE:
+        return 11;
+    case ITable::Value::TWO:
+        return 2;
+    case ITable::Value::THREE:
+        return 3;
+    case ITable::Value::FOUR:
+        return 4;
+    case ITable::Value::FIVE:
+        return 5;
+    case ITable::Value::SIX:
+        return 6;
+    case ITable::Value::SEVEN:
+        return 7;
+    case ITable::Value::EIGHT:
+        return 8;
+    case ITable::Value::NINE:
+        return 9;
+    case ITable::Value::TEN:
+        return 10;
+    case ITable::Value::JACK:
+        return 10;
+    case ITable::Value::QUEEN:
+        return 10;
+    case ITable::Value::KING:
+        return 10;    
+    }
+
+}
+
+JTable::HandInfo JTable::HandData(const Hand& hand){
+  HandInfo info{};
+  std::vector<Value> values;
+
+  for (const Card& card : hand)
+  {
+    values.push_back(card.value_);
+    info.total += GetCardValue(card);
+  }
+  
+  if(values[0] == values[1]) info.is_pair = true;
+  if((values[0] == Value::ACE || values[1] == Value::ACE)
+     && info.total > 21){
+      info.total -= 10;
+      info.is_soft = false;
+     } else info.is_soft = true;
+
+  return info;
+}
+
+JTable::Result JTable::ApplyPlayerAction(int player_index,int hand_index,Action action){
+  Hand checked_hand = GetHand(player_index, hand_index);
 
   if(action == Action::Stand)return Result::Ok;
     
@@ -191,12 +247,16 @@ JTable::Result JTable::ApplyPlayerAction(int player_index,int hand_index,Action 
 
   if(action == Action::Double){
 
-
+    player_bets_[player_index][hand_index] = GetPlayerCurrentBet(player_index, hand_index) * 2;
+    return Result::Ok;
   }
 
   if(action == Action::Split){
 
-
+    hands_[player_index][hand_index][0] = checked_hand[0];
+    hands_[player_index][hand_index + 1][0] = checked_hand[1];
+    player_bets_[player_index][hand_index + 1] = player_bets_[player_index][hand_index];
+    return Result::Ok;
   }
    
 }
@@ -224,5 +284,10 @@ void JTable::StartRound() {
 
 JTable::RoundEndInfo JTable::FinishRound(){
 
+  
+}
 
+void JTable::CleanTable(){
+
+  
 }
