@@ -4,7 +4,7 @@
 class JTable: public ITable {
   public:
 
-    JTable(int num_players, const BaseRules& rules);
+    JTable(unsigned int num_players, const BaseRules& rules);
 
     Hand GetHand(int player_index,int hand_index) const override;
     int GetNumberOfHands(int player_index) const override;
@@ -35,7 +35,7 @@ class JTable: public ITable {
 
     int GetCardValue(Card card);
 
-    void CleanTable() override;
+    
 
 
   private:
@@ -50,7 +50,7 @@ class JTable: public ITable {
     Hand dealer_hand_;                                  //Hand = std::vector<Card>
     std::vector<Card> deck_;
     const BaseRules& rules_;
-    int num_players_;
+    unsigned int num_players_;
     const int kSuitNum = 4;
     const int kValueNum = 13;
 

@@ -2,11 +2,8 @@
 
 class JPlayer : public IPlayer {
   public: 
-    JPlayer(int player_index, int hand_index, const ITable::Hand& hand)
-      : player_index_(player_index),
-        hand_index_(hand_index),
-        player_hand_(hand) {}
-
+    JPlayer() = default;
+ 
 
     ITable::Action DecidePlayerAction(const ITable& table, int player_index, int hand_index) = 0;
 
@@ -17,9 +14,6 @@ class JPlayer : public IPlayer {
    
 
   private:
-    int player_index_;
-    int hand_index_;
-    ITable::Hand player_hand_;
 
     enum class Decision : int{
       Stand = 0,
@@ -29,7 +23,7 @@ class JPlayer : public IPlayer {
       end = 4,
     };
 
-     std::vector<std::vector<Decision> > mat_correct_behaivour_ = {
+      std::vector<std::vector<Decision> > mat_correct_behaivour_  = {
        
         {Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,
         Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // <= 8

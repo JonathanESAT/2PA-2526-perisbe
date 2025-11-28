@@ -6,17 +6,19 @@
 
 
 
-JTable::JTable(int num_players, const BaseRules& rules)
+JTable::JTable(unsigned int num_players, const BaseRules& rules)
   : rules_{rules},
     num_players_{0},
     hands_{num_players_},
     player_bets_{num_players_},
-    total_player_money_{num_players_},
-    initial_bet_{num_players_},
-    insurance_bet_{num_players_},
+    total_player_money_{static_cast<int>(num_players_)},
+    initial_bet_{ static_cast<int>(num_players_)},
+    insurance_bet_{ static_cast<int>(num_players_)},
     dealer_money_{rules_.InitialDealerMoney()}, 
     dealer_hand_{},
     deck_{} {
+
+
     
   assert(num_players < 0 || num_players_ == 0);
  
@@ -54,7 +56,7 @@ JTable::Hand JTable::GetHand(int player_index, int hand_index) const{
 }
 
 int JTable::GetNumberOfHands(int player_index) const{
-  return hands_[player_index].size();
+  return static_cast<int>(hands_[player_index].size());
 }
 
 int JTable::GetPlayerCurrentBet(int player_index,int hand_index) const{
@@ -242,7 +244,8 @@ JTable::Result JTable::ApplyPlayerAction(int player_index,int hand_index,Action 
   
 
   if(action == Action::Hit){
-
+    DealCard(player_index, hand_index);
+    return Result::Ok;
   }
 
   if(action == Action::Double){
@@ -284,10 +287,16 @@ void JTable::StartRound() {
 
 JTable::RoundEndInfo JTable::FinishRound(){
 
-  
+  RoundEndInfo info;
+  return info;
 }
 
 void JTable::CleanTable(){
 
-  
+  for(int i = 0; i < num_players_; i++){
+    hands_[i].clear();
+    player_bets_[i].clear();
+    insurance_bet_.clear();
+    
+  }
 }
