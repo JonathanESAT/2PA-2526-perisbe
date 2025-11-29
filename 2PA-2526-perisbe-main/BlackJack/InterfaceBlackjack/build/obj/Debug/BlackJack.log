@@ -1,2 +1,13 @@
-﻿  main.cc
-  BlackJack.vcxproj -> D:\Perfiles\perisbe\Documents\ESAT\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\build\bin\Debug\BlackJack.exe
+﻿  JGame.cc
+  JPlayer.cc
+  JTable.cc
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(28,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(92,3): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(104,5): warning C4018: '>=': no coinciden signed/unsigned
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(126,3): warning C4018: '>=': no coinciden signed/unsigned
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(296,20): warning C4018: '<': no coinciden signed/unsigned
+  main.cc
+  Generando código...
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(217,1): warning C4715: 'JTable::GetCardValue': no todas las rutas de acceso de control devuelven un valor
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(265,1): warning C4715: 'JTable::ApplyPlayerAction': no todas las rutas de acceso de control devuelven un valor
+  BlackJack.vcxproj -> C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\build\bin\Debug\BlackJack.exe

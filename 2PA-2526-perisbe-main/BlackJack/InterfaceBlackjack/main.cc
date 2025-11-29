@@ -4,7 +4,9 @@
 #include "JPlayer.h"
 #include "JGame.h"
 
-int main() {
+int main(int, char**) {
+
+    /*
     RoundRules rules;
 
     JTable t{rules};
@@ -13,8 +15,9 @@ int main() {
     JGame g{rules,t,p1,p2,p3,p4,p5,p6,p7};
 
     g.PlayGame();
+    */
 
-
+    return 0;
 
 
 }

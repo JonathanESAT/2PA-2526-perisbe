@@ -1,19 +1,21 @@
 #include "IPlayer.h"
+#include <unordered_map>
 
 class JPlayer : public IPlayer {
   public: 
-    JPlayer() = default;
+    JPlayer();
  
 
-    ITable::Action DecidePlayerAction(const ITable& table, int player_index, int hand_index) = 0;
+    ITable::Action DecidePlayerAction(const ITable& table, int player_index, int hand_index)override;
 
-    int DecideInitialBet(const ITable& table, int player_index) = 0;
+    int DecideInitialBet(const ITable& table, int player_index)override;
 
-    bool DecideUseSafe(const ITable& table, int player_index) = 0;
+    bool DecideUseSafe(const ITable& table, int player_index)override;
 
    
 
   private:
+
 
     enum class Decision : int{
       Stand = 0,
@@ -23,87 +25,34 @@ class JPlayer : public IPlayer {
       end = 4,
     };
 
-      std::vector<std::vector<Decision> > mat_correct_behaivour_  = {
-       
-        {Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // <= 8
+    struct Key {
 
-        {Decision::Hit,   Decision::Double,Decision::Double,Decision::Double,Decision::Double,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 9
+      bool is_pair;
+      bool is_soft;
+      int total;
+      ITable::Value dealer_card;
 
-        {Decision::Double,Decision::Double,Decision::Double,Decision::Double,Decision::Double,
-        Decision::Double,Decision::Double,Decision::Double,Decision::Hit,   Decision::Hit},  // 10
+      bool operator==(const Key& other) const{
 
-        {Decision::Double,Decision::Double,Decision::Double,Decision::Double,Decision::Double,
-        Decision::Double,Decision::Double,Decision::Double,Decision::Double,Decision::Hit},  // 11
+        return is_pair == other.is_pair && 
+               is_soft == other.is_soft && 
+               total == other.total && 
+               dealer_card == other.dealer_card;
+      }
+    };
 
-        {Decision::Hit,   Decision::Hit,   Decision::Stand, Decision::Stand, Decision::Stand,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 12
+    struct KeyHash {
 
-        {Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 13
+      size_t operator()(const Key& key) const{
 
-        {Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 14
+        size_t h1 = std::hash<bool>()(key.is_pair);
+        size_t h2 = std::hash<bool>()(key.is_soft);
+        size_t h3 = std::hash<int>()(key.total);
+        size_t h4 = std::hash<int>()(static_cast<int>(key.dealer_card));
 
-        {Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 15
+        return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
 
-        {Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 16
-
-        {Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand,
-        Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand}, // >= 17
-
-        // Soft totals (A + X)
-        {Decision::Stand, Decision::Double,Decision::Double,Decision::Double,Decision::Double,
-        Decision::Stand, Decision::Stand, Decision::Hit,   Decision::Hit,   Decision::Hit},  // A - 7
-
-        {Decision::Hit,   Decision::Double,Decision::Double,Decision::Double,Decision::Double,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // A - 6
-
-        {Decision::Hit,   Decision::Hit,   Decision::Double,Decision::Double,Decision::Double,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // A - 5
-
-        {Decision::Hit,   Decision::Hit,   Decision::Double,Decision::Double,Decision::Double,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // A - 4
-
-        {Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Double,Decision::Double,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // A - 3
-
-        {Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Double,Decision::Double,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // A - 2
-
-        // Pairs
-        {Decision::Split, Decision::Split, Decision::Split, Decision::Split, Decision::Split,
-        Decision::Split, Decision::Split, Decision::Split, Decision::Split, Decision::Split}, // A - A
-
-        {Decision::Split, Decision::Split, Decision::Split, Decision::Split, Decision::Split,
-        Decision::Stand, Decision::Split, Decision::Split, Decision::Stand, Decision::Stand}, // 9 - 9
-
-        {Decision::Split, Decision::Split, Decision::Split, Decision::Split, Decision::Split,
-        Decision::Split, Decision::Split, Decision::Split, Decision::Split, Decision::Split}, // 8 - 8
-
-        {Decision::Split, Decision::Split, Decision::Split, Decision::Split, Decision::Split,
-        Decision::Split, Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 7 - 7
-
-        {Decision::Split, Decision::Split, Decision::Split, Decision::Split, Decision::Split,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 6 - 6
-
-        {Decision::Double,Decision::Double,Decision::Double,Decision::Double,Decision::Double,
-        Decision::Double,Decision::Double,Decision::Double,Decision::Hit,   Decision::Hit},  // 5 - 5
-
-        {Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,
-        Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 4 - 4
-
-        {Decision::Hit,   Decision::Hit,   Decision::Split, Decision::Split, Decision::Split,
-        Decision::Split, Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 3 - 3
-
-        {Decision::Hit,   Decision::Hit,   Decision::Split, Decision::Split, Decision::Split,
-        Decision::Split, Decision::Hit,   Decision::Hit,   Decision::Hit,   Decision::Hit},  // 2 - 2
-
-        {Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand,
-        Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand, Decision::Stand}, // 10 - 10
+      }
     };
 
     int GetCardValue(ITable::Card card);
@@ -116,6 +65,7 @@ class JPlayer : public IPlayer {
 
     };
 
+    std::unordered_map<Key, Decision, KeyHash> strategy_table_;
     HandInfo HandData(const ITable::Hand& hand);
     Decision GetMatCorrectDecision(HandInfo info, ITable::Card dealer_card);
 
