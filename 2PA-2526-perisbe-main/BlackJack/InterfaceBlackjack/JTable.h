@@ -34,7 +34,7 @@ class JTable: public ITable {
     RoundEndInfo FinishRound() override;
 
     int GetCardValue(Card card);
-
+    int GetHandValue(const Hand& hand);
     
 
 

@@ -154,6 +154,27 @@ JTable::Result JTable::PlaySafeBet(int player_index){
   
 }
 
+int JTable::GetHandValue(const Hand& hand) {
+
+  int sum = 0;
+  int aces = 0;
+  int win_point = rules_.GetWinPoint();
+
+  for (const Card& c : hand) {
+      sum += GetCardValue(c);
+      if (c.value_ == Value::ACE) {
+          ++aces;
+      }
+  }
+
+  while (sum > win_point && aces > 0) {
+      sum -= 10; 
+      --aces;
+  }
+
+  return sum;
+}
+
 void JTable::FillDeck(){
 
   for(int i = 0; i < rules_.NumberOfDecks(); i++){
@@ -288,8 +309,83 @@ void JTable::StartRound() {
 JTable::RoundEndInfo JTable::FinishRound(){
 
   RoundEndInfo info;
+
+  int win_point = rules_.GetWinPoint();
+
+
+  while (GetHandValue(dealer_hand_) < rules_.DealerStop() &&
+         GetHandValue(dealer_hand_) <= win_point) {
+
+    Card c = deck_.back();
+    deck_.pop_back();
+    dealer_hand_.push_back(c);
+  }
+
+  int dealer_total = GetHandValue(dealer_hand_);
+  bool dealer_bust = dealer_total > win_point;
+
+  info.dealer_hand = dealer_hand_;
+
+
+  info.winners.resize(num_players_);
+  info.player_money_delta.resize(num_players_, 0);
+  info.dealer_money_delta = 0;
+
+
+  for (unsigned int p = 0; p < num_players_; ++p) {
+
+    info.winners[p].resize(hands_[p].size(), false);
+
+    for (unsigned int h = 0; h < hands_[p].size(); ++h) {
+
+      int player_total = GetHandValue(hands_[p][h]);
+      bool player_bust = player_total > win_point;
+      int bet = player_bets_[p][h];
+
+    
+      bool player_wins = false;
+      bool draw = false;
+
+      if (player_bust) {
+        player_wins = false;
+      }
+      else if (dealer_bust) {
+        player_wins = true;
+      }
+      else if (player_total > dealer_total) {
+        player_wins = true;
+      }
+      else if (player_total < dealer_total) {
+        player_wins = false;
+      }
+      else {
+        draw = true;
+      }
+
+      info.winners[p][h] = player_wins;
+
+      if (draw) {
+        total_player_money_[p] += bet;
+        dealer_money_          -= bet;
+      }
+      else if (player_wins) {
+        total_player_money_[p] += 2 * bet;
+        dealer_money_          -= 2 * bet;
+
+        info.player_money_delta[p] += bet;
+        info.dealer_money_delta    -= bet;
+      }
+      else {
+        info.player_money_delta[p] -= bet;
+        info.dealer_money_delta    += bet;
+      }
+
+    }
+  }
+
   return info;
 }
+
 
 void JTable::CleanTable(){
 

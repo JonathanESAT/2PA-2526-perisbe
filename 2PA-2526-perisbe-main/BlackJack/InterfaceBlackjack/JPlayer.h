@@ -1,9 +1,10 @@
 #include "IPlayer.h"
+#include "Rules.h"
 #include <unordered_map>
 
 class JPlayer : public IPlayer {
   public: 
-    JPlayer();
+    JPlayer(const BaseRules& rules);
  
 
     ITable::Action DecidePlayerAction(const ITable& table, int player_index, int hand_index)override;
@@ -16,6 +17,7 @@ class JPlayer : public IPlayer {
 
   private:
 
+    const BaseRules& rules_;
 
     enum class Decision : int{
       Stand = 0,
