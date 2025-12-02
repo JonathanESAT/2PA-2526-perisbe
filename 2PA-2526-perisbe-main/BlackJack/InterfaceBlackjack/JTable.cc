@@ -1,3 +1,4 @@
+#pragma once
 #include "JTable.h"
 #include "Rules.h"
 #include <cassert>

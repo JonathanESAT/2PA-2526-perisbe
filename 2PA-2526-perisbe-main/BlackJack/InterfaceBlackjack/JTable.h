@@ -1,5 +1,7 @@
+#pragma once
 #include "ITable.h"
 #include "Rules.h"
+
 
 class JTable: public ITable {
   public:
@@ -35,13 +37,14 @@ class JTable: public ITable {
 
     int GetCardValue(Card card);
     int GetHandValue(const Hand& hand);
+
     
 
 
   private:
 
-    std::vector<std::vector<Hand> > hands_;              //hands_[player_index][hand_index];
-    std::vector<std::vector<int> > player_bets_;         //player_bets_[player_index][hand_index];
+    std::vector<std::vector<Hand> > hands_;             //hands_[player_index][hand_index];
+    std::vector<std::vector<int> > player_bets_;        //player_bets_[player_index][hand_index];
     std::vector<int> total_player_money_;               //total_player_money_[player_index];
     std::vector<int> insurance_bet_;                    //insurance_bet[player_index];
     std::vector<int> initial_bet_;                      //initial_bet[player_index];

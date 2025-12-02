@@ -1,5 +1,7 @@
+#pragma once
 #include "IPlayer.h"
 #include "Rules.h"
+#include "JTable.h"
 #include <unordered_map>
 
 class JPlayer : public IPlayer {
@@ -12,6 +14,8 @@ class JPlayer : public IPlayer {
     int DecideInitialBet(const ITable& table, int player_index)override;
 
     bool DecideUseSafe(const ITable& table, int player_index)override;
+
+    int GetCardValue(JTable::Card card);
 
    
 
@@ -52,12 +56,18 @@ class JPlayer : public IPlayer {
         size_t h3 = std::hash<int>()(key.total);
         size_t h4 = std::hash<int>()(static_cast<int>(key.dealer_card));
 
-        return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
+        size_t running_val = h1;
+        running_val = _rotr(running_val,8);
+        running_val ^= h2;
+        running_val = _rotr(running_val,8);
+        running_val ^= h3;
+        running_val = _rotr(running_val,8);
+        running_val ^= h4;
+        return running_val;
 
       }
     };
 
-    int GetCardValue(ITable::Card card);
 
     struct HandInfo{
 
@@ -71,8 +81,4 @@ class JPlayer : public IPlayer {
     HandInfo HandData(const ITable::Hand& hand);
     Decision GetMatCorrectDecision(HandInfo info, ITable::Card dealer_card);
 
-    
-    int HardRowIdx(int total);
-    int SoftRowIdx(int total);
-    int PairRowIdx(int pair_rank);
 };
