@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\build\\",
+  "WorkspaceRootPath": "C:\\Users\\Jonathan\\Desktop\\ESAT\\2PVG\\Programacion_Avanzada\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\build\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FBB271BF-671D-2636-B05B-D7DB1C05048B}|BlackJack.vcxproj|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBB271BF-671D-2636-B05B-D7DB1C05048B}|BlackJack.vcxproj|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\ITable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBB271BF-671D-2636-B05B-D7DB1C05048B}|BlackJack.vcxproj|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBB271BF-671D-2636-B05B-D7DB1C05048B}|BlackJack.vcxproj|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBB271BF-671D-2636-B05B-D7DB1C05048B}|BlackJack.vcxproj|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBB271BF-671D-2636-B05B-D7DB1C05048B}|BlackJack.vcxproj|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jonathan\\Desktop\\ESAT\\2PVG\\Programacion_Avanzada\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FBB271BF-671D-2636-B05B-D7DB1C05048B}|BlackJack.vcxproj|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\premake5.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\ITable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\premake5.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,100 +41,81 @@
               "DocumentIndex": 0,
               "Title": "JTable.cc",
               "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.cc",
-              "RelativeDocumentMoniker": "..\\JTable.cc",
               "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.cc",
-              "RelativeToolTip": "..\\JTable.cc",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAAAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-28T08:59:44.209Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ITable.h",
+              "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\ITable.h",
+              "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\ITable.h",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAAAF8AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-02T08:53:31.946Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ITable.h",
-              "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\ITable.h",
-              "RelativeDocumentMoniker": "..\\ITable.h",
-              "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\ITable.h",
-              "RelativeToolTip": "..\\ITable.h",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAAAF8AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-02T08:53:31.946Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "main.cc",
               "DocumentMoniker": "C:\\Users\\Jonathan\\Desktop\\ESAT\\2PVG\\Programacion_Avanzada\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc",
               "ToolTip": "C:\\Users\\Jonathan\\Desktop\\ESAT\\2PVG\\Programacion_Avanzada\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-29T21:24:02.791Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "main.cc",
               "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc",
-              "RelativeDocumentMoniker": "..\\main.cc",
               "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\main.cc",
-              "RelativeToolTip": "..\\main.cc",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-28T09:47:34.155Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-28T09:47:34.155Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "premake5.lua",
               "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\premake5.lua",
-              "RelativeDocumentMoniker": "..\\premake5.lua",
               "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\premake5.lua",
-              "RelativeToolTip": "..\\premake5.lua",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-11-28T09:45:50.487Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "JPlayer.h",
               "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.h",
-              "RelativeDocumentMoniker": "..\\JPlayer.h",
               "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.h",
-              "RelativeToolTip": "..\\JPlayer.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-28T09:18:58.131Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-28T09:18:58.131Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "JPlayer.cc",
               "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.cc",
-              "RelativeDocumentMoniker": "..\\JPlayer.cc",
               "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JPlayer.cc",
-              "RelativeToolTip": "..\\JPlayer.cc",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-28T09:03:36.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-28T09:03:36.367Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "JTable.h",
               "DocumentMoniker": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.h",
-              "RelativeDocumentMoniker": "..\\JTable.h",
               "ToolTip": "D:\\Perfiles\\perisbe\\Documents\\ESAT\\2PA-2526-perisbe\\2PA-2526-perisbe-main\\BlackJack\\InterfaceBlackjack\\JTable.h",
-              "RelativeToolTip": "..\\JTable.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-28T08:58:37.237Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-28T08:58:37.237Z"
             }
           ]
         }

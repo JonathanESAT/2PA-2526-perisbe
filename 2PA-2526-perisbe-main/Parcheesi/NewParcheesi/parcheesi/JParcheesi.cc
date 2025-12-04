@@ -220,11 +220,22 @@ IParcheesi::Color JParcheesi::ColorofPiece(int box_index, int piece_index) const
 
   int pl = occ_player[piece_index];
   switch (pl) {
-    case 0: return Color::Yellow;
-    case 1: return Color::Blue;
-    case 2: return Color::Red;
-    case 3: return Color::Green;
-    default: return Color::None;
+
+    case 0: 
+      return Color::Yellow;
+
+    case 1: 
+      return Color::Blue;
+
+    case 2: 
+      return Color::Red;
+
+    case 3: 
+      return Color::Green;
+
+    default: 
+      return Color::None;
+      
   }
 }
 

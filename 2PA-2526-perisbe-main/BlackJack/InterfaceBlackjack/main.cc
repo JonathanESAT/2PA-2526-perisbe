@@ -11,7 +11,7 @@ int main(int, char**) {
 
    
 
-    JTable t{*rules};
+    JTable t{4,*rules};
     JPlayer p1{*rules},p2{*rules},p3{*rules},p4{*rules};
     JPlayer p5{*rules},p6{*rules},p7{*rules};
     std::vector<IPlayer*> Players = {&p1,&p2,&p3,&p4,&p5,&p6};
