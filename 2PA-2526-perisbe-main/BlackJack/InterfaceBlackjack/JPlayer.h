@@ -17,13 +17,15 @@ class JPlayer : public IPlayer {
 
     int GetCardValue(JTable::Card card);
 
+    
+
    
 
   private:
 
     const BaseRules& rules_;
 
-    enum class Decision : int{
+    static const enum class Decision : int{
       Stand = 0,
       Hit,
       Split,
@@ -76,6 +78,21 @@ class JPlayer : public IPlayer {
       int total;
 
     };
+
+
+    static const struct Rule{
+
+      bool is_pair;
+      bool is_soft;
+      int total;
+
+      ITable::Value dealer_min;
+      ITable::Value dealer_max;
+
+      Decision decision;
+    };
+
+
 
     std::unordered_map<Key, Decision, KeyHash> strategy_table_;
     HandInfo HandData(const ITable::Hand& hand);

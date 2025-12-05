@@ -4,6 +4,36 @@
 
 
 
+static const JPlayer::Rule kRules[] = {
+
+
+    //Hard 8
+    {false,false,8, ITable::Value::ACE, ITable::Value::KING, JPlayer::Decision::Hit},
+
+    //Hard 9
+    {false,false,9, ITable::Value::THREE, ITable::Value::SIX, JPlayer::Decision::Double},
+    {false,false,9, ITable::Value::ACE, ITable::Value::TWO, JPlayer::Decision::Hit},
+    {false,false,9, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
+
+    //Hard 10
+    {false,false,10, ITable::Value::TWO, ITable::Value::NINE, JPlayer::Decision::Double},
+    {false,false,10, ITable::Value::ACE, ITable::Value::ACE, JPlayer::Decision::Hit},
+    {false,false,10, ITable::Value::TEN, ITable::Value::KING, JPlayer::Decision::Hit},
+
+    //Hard 11
+    {false,false,11, ITable::Value::ACE, ITable::Value::ACE, JPlayer::Decision::Hit},
+    {false,false,11, ITable::Value::TWO, ITable::Value::KING, JPlayer::Decision::Double},
+
+    //Hard 12
+    {false,false,12, ITable::Value::FOUR, ITable::Value::SIX, JPlayer::Decision::Stand},
+    {false,false,12, ITable::Value::ACE, ITable::Value::THREE, JPlayer::Decision::Hit},
+    {false,false,12, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
+
+    //Hard 13
+    {false,false,13, ITable::Value::}
+
+};
+
 JPlayer::JPlayer(const BaseRules& rules) :rules_{ rules } {
 
     strategy_table_.clear();
