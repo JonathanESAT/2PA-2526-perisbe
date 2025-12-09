@@ -5,24 +5,32 @@
 #include "JGame.h"
 
 int main(int, char**) {
-    BaseRules* rules; 
-
-    rules = new BaseRules;
 
    
+    BaseRules rules;
 
-    JTable t{4,*rules};
-    JPlayer p1{*rules},p2{*rules},p3{*rules},p4{*rules};
-    JPlayer p5{*rules},p6{*rules},p7{*rules};
-    std::vector<IPlayer*> Players = {&p1,&p2,&p3,&p4,&p5,&p6};
-    JGame game(t, Players);
+   
+    const unsigned int kNumPlayers = 6;
+
+    
+    JTable table{kNumPlayers, rules};
+
+ 
+    JPlayer p1{rules};
+    JPlayer p2{rules};
+    JPlayer p3{rules};
+    JPlayer p4{rules};
+    JPlayer p5{rules};
+    JPlayer p6{rules};
+
+
+    std::vector<IPlayer*> players = { &p1, &p2, &p3, &p4, &p5, &p6 };
+
+
+    JGame game(table, players);
+
+
     game.PlayGame();
-    delete rules;
 
-
-
-return 0;
-
-
-
+    return 0;
 }

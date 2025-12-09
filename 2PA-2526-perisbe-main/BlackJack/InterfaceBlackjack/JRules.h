@@ -1,3 +1,4 @@
+#pragma once
 #include "Rules.h"
 #include "stdio.h"
 
@@ -10,21 +11,21 @@ public:
     class JRulesIvan: public BaseRules {
         ~JRulesIvan() = default;
 
-        int GetWinPoint() const  { return 25; }
+        int GetWinPoint() const override { return 25; }
 
-        int NumberOfDecks() const { return 2; }
+        int NumberOfDecks() const override { return 2; }
 
-        int InitialCards() const { return 3; }
+        int InitialCards() const override { return 3; }
 
-        int InitialPlayerMoney() const { return 4000; }
+        int InitialPlayerMoney() const override { return 4000; }
 
-        int InitialDealerMoney() const { return 100000; }
+        int InitialDealerMoney() const override { return 100000; }
 
-        int MinimumInitialBet() const { return 100; }
+        int MinimumInitialBet() const override { return 100; }
 
-        int MaximumInitialBet() const { return 10000; }
+        int MaximumInitialBet() const override { return 10000; }
 
-        int DealerStop() const { return 21; }
+        int DealerStop() const override { return 21; }
 
     };
 
@@ -33,21 +34,21 @@ public:
 
         ~JRulesJessica() = default;
 
-        int GetWinPoint() const  { return 20; }
+        int GetWinPoint() const override { return 20; }
 
-        int NumberOfDecks() const { return 1; }
+        int NumberOfDecks() const override { return 1; }
 
-        int InitialCards() const { return 2; }
+        int InitialCards() const override { return 2; }
 
-        int InitialPlayerMoney() const { return 4000; }
+        int InitialPlayerMoney() const override { return 4000; }
 
-        int InitialDealerMoney() const { return 100000; }
+        int InitialDealerMoney() const override { return 100000; }
 
-        int MinimumInitialBet() const { return 100; }
+        int MinimumInitialBet() const override { return 100; }
 
-        int MaximumInitialBet() const { return 10000; }
+        int MaximumInitialBet() const override { return 10000; }
 
-        int DealerStop() const { return 16; }
+        int DealerStop() const override { return 16; }
         
 
         

@@ -1,34 +1,11 @@
 ﻿  JGame.cc
-  JPlayer.cc
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(60,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
-  (compilando archivo de origen "../JPlayer.cc")
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(63,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
+  (compilando archivo de origen "../JGame.cc")
   
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(62,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
-  (compilando archivo de origen "../JPlayer.cc")
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(65,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
+  (compilando archivo de origen "../JGame.cc")
   
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(64,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
-  (compilando archivo de origen "../JPlayer.cc")
+C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(67,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
+  (compilando archivo de origen "../JGame.cc")
   
-  JTable.cc
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(29,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(93,3): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(105,5): warning C4018: '>=': no coinciden signed/unsigned
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(127,3): warning C4018: '>=': no coinciden signed/unsigned
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(393,20): warning C4018: '<': no coinciden signed/unsigned
-  main.cc
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(60,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
-  (compilando archivo de origen "../main.cc")
-  
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(62,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
-  (compilando archivo de origen "../main.cc")
-  
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.h(64,29): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
-  (compilando archivo de origen "../main.cc")
-  
-  Generando código...
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(239,1): warning C4715: 'JTable::GetCardValue': no todas las rutas de acceso de control devuelven un valor
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JTable.cc(287,1): warning C4715: 'JTable::ApplyPlayerAction': no todas las rutas de acceso de control devuelven un valor
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\JPlayer.cc(443,1): warning C4715: 'JPlayer::GetCardValue': no todas las rutas de acceso de control devuelven un valor
-main.obj : error LNK2019: símbolo externo "public: virtual void __cdecl JGame::PlayGame(void)" (?PlayGame@JGame@@UEAAXXZ) sin resolver al que se hace referencia en la función main
-main.obj : error LNK2019: símbolo externo "public: __cdecl JGame::JGame(class JTable const &,class std::vector<class IPlayer *,class std::allocator<class IPlayer *> > &)" (??0JGame@@QEAA@AEBVJTable@@AEAV?$vector@PEAVIPlayer@@V?$allocator@PEAVIPlayer@@@std@@@std@@@Z) sin resolver al que se hace referencia en la función main
-C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\build\bin\Debug\BlackJack.exe : fatal error LNK1120: 2 externos sin resolver
+  BlackJack.vcxproj -> C:\Users\Jonathan\Desktop\ESAT\2PVG\Programacion_Avanzada\2PA-2526-perisbe\2PA-2526-perisbe-main\BlackJack\InterfaceBlackjack\build\bin\Debug\BlackJack.exe

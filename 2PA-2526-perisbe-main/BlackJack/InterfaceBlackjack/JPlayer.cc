@@ -1,477 +1,175 @@
-#pragma once
 #include "JPlayer.h"
-#include "cassert"
+#include <cassert>
 
+static const JPlayer::Rule kRules[] = 
+{
+    // ========================= HARD HANDS =========================
 
+    // Hard 8
+    {false,false,8 , ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Hit},
 
-static const JPlayer::Rule kRules[] = {
+    // Hard 9
+    {false,false,9 , ITable::Value::THREE, ITable::Value::SIX,  JPlayer::Decision::Double},
+    {false,false,9 , ITable::Value::ACE,   ITable::Value::TWO,  JPlayer::Decision::Hit},
+    {false,false,9 , ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
 
+    // Hard 10
+    {false,false,10, ITable::Value::TWO,   ITable::Value::NINE, JPlayer::Decision::Double},
+    {false,false,10, ITable::Value::TEN,   ITable::Value::KING, JPlayer::Decision::Hit},
+    {false,false,10, ITable::Value::ACE,   ITable::Value::ACE,  JPlayer::Decision::Hit},
 
-    //Hard 8
-    {false,false,8, ITable::Value::ACE, ITable::Value::KING, JPlayer::Decision::Hit},
+    // Hard 11
+    {false,false,11, ITable::Value::ACE,   ITable::Value::ACE,  JPlayer::Decision::Hit},
+    {false,false,11, ITable::Value::TWO,   ITable::Value::KING, JPlayer::Decision::Double},
 
-    //Hard 9
-    {false,false,9, ITable::Value::THREE, ITable::Value::SIX, JPlayer::Decision::Double},
-    {false,false,9, ITable::Value::ACE, ITable::Value::TWO, JPlayer::Decision::Hit},
-    {false,false,9, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
-
-    //Hard 10
-    {false,false,10, ITable::Value::TWO, ITable::Value::NINE, JPlayer::Decision::Double},
-    {false,false,10, ITable::Value::ACE, ITable::Value::ACE, JPlayer::Decision::Hit},
-    {false,false,10, ITable::Value::TEN, ITable::Value::KING, JPlayer::Decision::Hit},
-
-    //Hard 11
-    {false,false,11, ITable::Value::ACE, ITable::Value::ACE, JPlayer::Decision::Hit},
-    {false,false,11, ITable::Value::TWO, ITable::Value::KING, JPlayer::Decision::Double},
-
-    //Hard 12
-    {false,false,12, ITable::Value::FOUR, ITable::Value::SIX, JPlayer::Decision::Stand},
-    {false,false,12, ITable::Value::ACE, ITable::Value::THREE, JPlayer::Decision::Hit},
+    // Hard 12
+    {false,false,12, ITable::Value::FOUR,  ITable::Value::SIX,  JPlayer::Decision::Stand},
+    {false,false,12, ITable::Value::ACE,   ITable::Value::THREE,JPlayer::Decision::Hit},
     {false,false,12, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
 
-    //Hard 13
-    {false,false,13, ITable::Value::}
+    // Hard 13–16
+    {false,false,13, ITable::Value::TWO,   ITable::Value::SIX,  JPlayer::Decision::Stand},
+    {false,false,13, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
+    {false,false,13, ITable::Value::ACE,   ITable::Value::ACE,  JPlayer::Decision::Hit},
 
+    {false,false,14, ITable::Value::TWO,   ITable::Value::SIX,  JPlayer::Decision::Stand},
+    {false,false,14, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
+    {false,false,14, ITable::Value::ACE,   ITable::Value::ACE,  JPlayer::Decision::Hit},
+
+    {false,false,15, ITable::Value::TWO,   ITable::Value::SIX,  JPlayer::Decision::Stand},
+    {false,false,15, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
+    {false,false,15, ITable::Value::ACE,   ITable::Value::ACE,  JPlayer::Decision::Hit},
+
+    {false,false,16, ITable::Value::TWO,   ITable::Value::SIX,  JPlayer::Decision::Stand},
+    {false,false,16, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
+    {false,false,16, ITable::Value::ACE,   ITable::Value::ACE,  JPlayer::Decision::Hit},
+
+    // Hard 17–21
+    {false,false,17, ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Stand},
+    {false,false,18, ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Stand},
+    {false,false,19, ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Stand},
+    {false,false,20, ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Stand},
+    {false,false,21, ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Stand},
+
+    // ========================= SOFT HANDS =========================
+
+    // Soft 18 (A+7)
+    {false,true,18, ITable::Value::TWO,   ITable::Value::TWO,   JPlayer::Decision::Stand},
+    {false,true,18, ITable::Value::SEVEN, ITable::Value::EIGHT, JPlayer::Decision::Stand},
+    {false,true,18, ITable::Value::THREE, ITable::Value::SIX,   JPlayer::Decision::Double},
+    {false,true,18, ITable::Value::NINE,  ITable::Value::ACE,   JPlayer::Decision::Hit},
+
+    // Soft 17 (A+6)
+    {false,true,17, ITable::Value::THREE, ITable::Value::SIX,   JPlayer::Decision::Double},
+    {false,true,17, ITable::Value::ACE,   ITable::Value::TWO,   JPlayer::Decision::Hit},
+    {false,true,17, ITable::Value::SEVEN, ITable::Value::KING,  JPlayer::Decision::Hit},
+
+    // Soft 15–16 (A+4, A+5)
+    {false,true,15, ITable::Value::THREE, ITable::Value::FIVE,  JPlayer::Decision::Double},
+    {false,true,15, ITable::Value::ACE,   ITable::Value::TWO,   JPlayer::Decision::Hit},
+    {false,true,15, ITable::Value::SIX,   ITable::Value::KING,  JPlayer::Decision::Hit},
+
+    {false,true,16, ITable::Value::THREE, ITable::Value::FIVE,  JPlayer::Decision::Double},
+    {false,true,16, ITable::Value::ACE,   ITable::Value::TWO,   JPlayer::Decision::Hit},
+    {false,true,16, ITable::Value::SIX,   ITable::Value::KING,  JPlayer::Decision::Hit},
+
+    // Soft 13–14 (A+2, A+3)
+    {false,true,13, ITable::Value::FOUR, ITable::Value::FIVE,  JPlayer::Decision::Double},
+    {false,true,13, ITable::Value::ACE,  ITable::Value::THREE, JPlayer::Decision::Hit},
+    {false,true,13, ITable::Value::SIX,  ITable::Value::KING,  JPlayer::Decision::Hit},
+
+    {false,true,14, ITable::Value::FOUR, ITable::Value::FIVE,  JPlayer::Decision::Double},
+    {false,true,14, ITable::Value::ACE,  ITable::Value::THREE, JPlayer::Decision::Hit},
+    {false,true,14, ITable::Value::SIX,  ITable::Value::KING,  JPlayer::Decision::Hit},
+
+    // ========================= PAIRS =========================
+
+    // A-A (total 12)
+    {true,false,12, ITable::Value::ACE, ITable::Value::KING,  JPlayer::Decision::Split},
+
+    // 9-9 (total 18)
+    {true,false,18, ITable::Value::ACE,   ITable::Value::ACE,  JPlayer::Decision::Split},
+    {true,false,18, ITable::Value::TWO,   ITable::Value::FIVE, JPlayer::Decision::Split},
+    {true,false,18, ITable::Value::SEVEN, ITable::Value::EIGHT,JPlayer::Decision::Split},
+    {true,false,18, ITable::Value::SIX,   ITable::Value::SIX,  JPlayer::Decision::Stand},
+    {true,false,18, ITable::Value::NINE,  ITable::Value::KING, JPlayer::Decision::Stand},
+
+    // 8-8 (total 16)
+    {true,false,16, ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Split},
+
+    // 7-7 (total 14)
+    {true,false,14, ITable::Value::ACE,   ITable::Value::SIX,  JPlayer::Decision::Split},
+    {true,false,14, ITable::Value::SEVEN, ITable::Value::KING, JPlayer::Decision::Hit},
+
+    // 6-6 (total 12)
+    {true,false,12, ITable::Value::ACE,   ITable::Value::FIVE, JPlayer::Decision::Split},
+    {true,false,12, ITable::Value::SIX,   ITable::Value::KING, JPlayer::Decision::Hit},
+
+    // 5-5 (total 10)
+    {true,false,10, ITable::Value::ACE,   ITable::Value::EIGHT, JPlayer::Decision::Double},
+    {true,false,10, ITable::Value::NINE,  ITable::Value::KING,  JPlayer::Decision::Hit},
+
+    // 4-4 (total 8)
+    {true,false,8 , ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Hit},
+
+    // 3-3 y 2-2
+    {true,false,4 , ITable::Value::THREE, ITable::Value::SIX,  JPlayer::Decision::Split},
+    {true,false,6 , ITable::Value::THREE, ITable::Value::SIX,  JPlayer::Decision::Split},
+    {true,false,4 , ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Hit},
+    {true,false,6 , ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Hit},
+
+    // 10-10 (total 20)
+    {true,false,20, ITable::Value::ACE,   ITable::Value::KING, JPlayer::Decision::Stand}
 };
 
-JPlayer::JPlayer(const BaseRules& rules) :rules_{ rules } {
+JPlayer::JPlayer(const BaseRules& rules)
+  : rules_(rules) {
 
     strategy_table_.clear();
 
+    const int num_rules = static_cast<int>(sizeof(kRules) / sizeof(kRules[0]));
 
-    // HARD 8 -> siempre Hit
+    for (int i = 0; i < num_rules; ++i) {
+        const Rule& r = kRules[i];
 
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); dealer++) {
-
-        Key key;
-        key.is_pair = false;
-        key.is_soft = false;
-        key.total = 8;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-        strategy_table_[key] = Decision::Hit;
-
-
-    }
-
-    // HARD 9
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); dealer++) {
-
-        Key key;
-        key.is_pair = false;
-        key.is_soft = false;
-        key.total = 9;
-        key.dealer_card = (ITable::Value)dealer;
-
-        if (dealer >= static_cast<int>(ITable::Value::THREE) && dealer <= static_cast<int>(ITable::Value::SIX))
-            strategy_table_[key] = Decision::Double;
-        else
-            strategy_table_[key] = Decision::Hit;
-    }
-
-    // HARD 10
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); dealer++) {
-
-        Key key;
-        key.is_pair = false;
-        key.is_soft = false;
-        key.total = 10;
-        key.dealer_card = (ITable::Value)dealer;
-
-        if (dealer >= static_cast<int>(ITable::Value::TWO) && dealer <= static_cast<int>(ITable::Value::NINE))
-            strategy_table_[key] = Decision::Double;
-        else
-            strategy_table_[key] = Decision::Hit;
-    }
-
-    // HARD 11
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); dealer++) {
-
-        Key key;
-        key.is_pair = false;
-        key.is_soft = false;
-        key.total = 11;
-        key.dealer_card = (ITable::Value)dealer;
-
-        if (dealer == static_cast<int>(ITable::Value::ACE))
-            strategy_table_[key] = Decision::Hit;
-        else
-            strategy_table_[key] = Decision::Double;
-    }
-
-    // HARD 12
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); dealer++) {
-
-        Key key;
-        key.is_pair = false;
-        key.is_soft = false;
-        key.total = 12;
-        key.dealer_card = (ITable::Value)dealer;
-
-        if (dealer >= static_cast<int>(ITable::Value::FOUR) && dealer <= static_cast<int>(ITable::Value::SIX))
-            strategy_table_[key] = Decision::Stand;
-        else
-            strategy_table_[key] = Decision::Hit;
-    }
-
-    // HARD 13 a 16
-
-    for (int total = 13; total <= 16; total++) {
-        for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); dealer++) {
-
-            Key Key;
-            Key.is_pair = false;
-            Key.is_soft = false;
-            Key.total = total;
-            Key.dealer_card = (ITable::Value)dealer;
-
-            if (dealer >= static_cast<int>(ITable::Value::TWO) && dealer <= static_cast<int>(ITable::Value::SIX))
-                strategy_table_[Key] = Decision::Stand;
-            else
-                strategy_table_[Key] = Decision::Hit;
-        }
-    }
-
-    // HARD 17+
-
-    for (int total = 17; total <= 21; total++) {
-
-        for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); dealer++) {
-
-            Key Key;
-            Key.is_pair = false;
-            Key.is_soft = false;
-            Key.total = total;
-            Key.dealer_card = (ITable::Value)dealer;
-
-            strategy_table_[Key] = Decision::Stand;
-        }
-    }
-
-    // SOFT 18 (A+7)
-
-    int total = 18;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = false;
-        key.is_soft = true;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        if (dealer == static_cast<int>(ITable::Value::TWO) || dealer == static_cast<int>(ITable::Value::SEVEN) || dealer == static_cast<int>(ITable::Value::EIGHT)) {
-
-            strategy_table_[key] = Decision::Stand;
-
-        }
-        else if (dealer >= static_cast<int>(ITable::Value::THREE) && dealer <= static_cast<int>(ITable::Value::SIX)) {
-
-            strategy_table_[key] = Decision::Double;
-
-        }
-        else {
-            // 9, 10, J, Q, K, A
-            strategy_table_[key] = Decision::Hit;
-        }
-    }
-
-    // SOFT 17 (A+6)
-
-    total = 17;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = false;
-        key.is_soft = true;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        if (dealer >= static_cast<int>(ITable::Value::THREE) && dealer <= static_cast<int>(ITable::Value::SIX)) {
-
-            strategy_table_[key] = Decision::Double;
-
-        }
-        else {
-
-            strategy_table_[key] = Decision::Hit;
-        }
-    }
-
-    // SOFT 15 y 16 (A+4, A+5)
-
-    for (int total = 15; total <= 16; ++total) {
-
-        for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
+        for (int dv = static_cast<int>(r.dealer_min);
+             dv <= static_cast<int>(r.dealer_max);
+             ++dv) {
 
             Key key;
-            key.is_pair = false;
-            key.is_soft = true;
-            key.total = total;
-            key.dealer_card = static_cast<ITable::Value>(dealer);
+            key.is_pair     = r.is_pair;
+            key.is_soft     = r.is_soft;
+            key.total       = r.total;
+            key.dealer_card = static_cast<ITable::Value>(dv);
 
-            if (dealer >= static_cast<int>(ITable::Value::THREE) && dealer <= static_cast<int>(ITable::Value::FIVE)) {
-
-                strategy_table_[key] = Decision::Double;
-
-            }
-            else {
-
-                strategy_table_[key] = Decision::Hit;
-            }
-
+            strategy_table_[key] = r.decision;
         }
-    }
-
-    // SOFT 13 y 14 (A+2, A+3)
-
-    for (int total = 13; total <= 14; ++total) {
-
-        for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-            Key key;
-            key.is_pair = false;
-            key.is_soft = true;
-            key.total = total;
-            key.dealer_card = static_cast<ITable::Value>(dealer);
-
-            if (dealer == static_cast<int>(ITable::Value::FOUR) || dealer == static_cast<int>(ITable::Value::FIVE)) {
-
-                strategy_table_[key] = Decision::Double;
-
-            }
-            else {
-
-                strategy_table_[key] = Decision::Hit;
-            }
-        }
-    }
-
-    // PAIR A-A (total 12)
-
-    total = 12;
-
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        strategy_table_[key] = Decision::Split;
-    }
-
-
-    // PAIR 9-9 (total 18)
-
-    total = 18;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        if (dealer == static_cast<int>(ITable::Value::ACE) || (dealer >= static_cast<int>(ITable::Value::TWO) &&
-            dealer <= static_cast<int>(ITable::Value::FIVE)) || dealer == static_cast<int>(ITable::Value::SEVEN) || dealer == static_cast<int>(ITable::Value::EIGHT)) {
-
-            strategy_table_[key] = Decision::Split;
-
-        }
-        else {
-            // dealer = 6, 9, 10/J/Q/K
-            strategy_table_[key] = Decision::Stand;
-        }
-    }
-
-    // PAIR 8-8 (total 16)
-
-    total = 16;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        strategy_table_[key] = Decision::Split;
-    }
-
-    // PAIR 7-7 (total 14)
-
-    total = 14;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        if (dealer <= static_cast<int>(ITable::Value::SIX)) {
-
-            strategy_table_[key] = Decision::Split;
-
-        }
-        else {
-
-            strategy_table_[key] = Decision::Hit;
-        }
-    }
-
-    // PAIR 6-6
-
-    total = 12;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        if (dealer <= static_cast<int>(ITable::Value::FIVE)) {
-
-            strategy_table_[key] = Decision::Split;
-
-        }
-        else {
-
-            strategy_table_[key] = Decision::Hit;
-        }
-    }
-
-    // PAIR 5-5 (total 10)
-
-    total = 10;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        if (dealer <= static_cast<int>(ITable::Value::EIGHT)) {
-
-            strategy_table_[key] = Decision::Double;
-
-        }
-        else {
-
-            strategy_table_[key] = Decision::Hit;
-        }
-    }
-
-    // PAIR 4-4 (total 8)
-
-    total = 8;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        strategy_table_[key] = Decision::Hit;
-    }
-
-    // PAIR 2-2 (total 4) y 3-3 (total 6)
-
-    for (int total : {4, 6}) {
-
-        for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-            Key key;
-            key.is_pair = true;
-            key.is_soft = false;
-            key.total = total;
-            key.dealer_card = static_cast<ITable::Value>(dealer);
-
-            if (dealer == static_cast<int>(ITable::Value::ACE) || dealer == static_cast<int>(ITable::Value::TWO)) {
-
-                strategy_table_[key] = Decision::Hit;
-
-            }
-            else if (dealer >= static_cast<int>(ITable::Value::THREE) && dealer <= static_cast<int>(ITable::Value::SIX)) {
-
-                strategy_table_[key] = Decision::Split;
-
-            }
-            else {
-
-                strategy_table_[key] = Decision::Hit;
-            }
-        }
-    }
-
-    // PAIR 10-10 (total 20)
-
-    total = 20;
-
-    for (int dealer = static_cast<int>(ITable::Value::ACE); dealer <= static_cast<int>(ITable::Value::KING); ++dealer) {
-
-        Key key;
-        key.is_pair = true;
-        key.is_soft = false;
-        key.total = total;
-        key.dealer_card = static_cast<ITable::Value>(dealer);
-
-        strategy_table_[key] = Decision::Stand;
     }
 }
 
-int JPlayer::GetCardValue(JTable::Card card) {
-    JTable::Value value = card.value_;
+int JPlayer::GetCardValue(ITable::Card card) {
+    ITable::Value value = card.value_;
 
-
-    switch (value)
-    {
-    case ITable::Value::ACE:
-        return 11;
-    case ITable::Value::TWO:
-        return 2;
-    case ITable::Value::THREE:
-        return 3;
-    case ITable::Value::FOUR:
-        return 4;
-    case ITable::Value::FIVE:
-        return 5;
-    case ITable::Value::SIX:
-        return 6;
-    case ITable::Value::SEVEN:
-        return 7;
-    case ITable::Value::EIGHT:
-        return 8;
-    case ITable::Value::NINE:
-        return 9;
-    case ITable::Value::TEN:
-        return 10;
-    case ITable::Value::JACK:
-        return 10;
-    case ITable::Value::QUEEN:
-        return 10;
-    case ITable::Value::KING:
-        return 10;
+    switch (value) {
+      case ITable::Value::ACE:   return 11;
+      case ITable::Value::TWO:   return 2;
+      case ITable::Value::THREE: return 3;
+      case ITable::Value::FOUR:  return 4;
+      case ITable::Value::FIVE:  return 5;
+      case ITable::Value::SIX:   return 6;
+      case ITable::Value::SEVEN: return 7;
+      case ITable::Value::EIGHT: return 8;
+      case ITable::Value::NINE:  return 9;
+      case ITable::Value::TEN:   return 10;
+      case ITable::Value::JACK:  return 10;
+      case ITable::Value::QUEEN: return 10;
+      case ITable::Value::KING:  return 10;
+      case ITable::Value::end:   break;
     }
 
+    assert(false);
+    return 0;
 }
-
 
 JPlayer::HandInfo JPlayer::HandData(const ITable::Hand& hand) {
 
@@ -480,125 +178,90 @@ JPlayer::HandInfo JPlayer::HandData(const ITable::Hand& hand) {
   info.is_soft = false;
   info.total   = 0;
 
-  
   if (hand.empty()) {
-
     return info;
-
   }
 
   int sum = 0;
   int aces_count = 0;
 
-  
   for (const ITable::Card& card : hand) {
-
     if (card.value_ == ITable::Value::ACE) {
       aces_count++;
     }
-
     sum += GetCardValue(card);
   }
 
-  
   int remaining_aces_as_11 = aces_count;
 
   while (sum > 21 && remaining_aces_as_11 > 0) {
     sum -= 10;              
     remaining_aces_as_11--;
-
   }
 
   info.total = sum;
 
-
   if (hand.size() == 2 && hand[0].value_ == hand[1].value_) {
     info.is_pair = true;
-
   } else {
     info.is_pair = false;
-
   }
 
-
   if (!info.is_pair) {
-
     if (aces_count > 0 && remaining_aces_as_11 > 0 && info.total <= 21) {
       info.is_soft = true;
-
     } else {
       info.is_soft = false;
-
     }
-
   } else {
-   
     info.is_soft = false;
   }
 
   return info;
 }
 
-    
-
-
 ITable::Action JPlayer::DecidePlayerAction(const ITable& table, int player_index, int hand_index) {
-   
     ITable::Hand hand = table.GetHand(player_index, hand_index);
 
-   
     if (hand.empty()) {
-
         return ITable::Action::Hit;
     }
 
-    
     HandInfo info = HandData(hand);
-
-  
     ITable::Card dealer_card = table.GetDealerCard();
 
-   
     Decision decision = GetMatCorrectDecision(info, dealer_card);
-
 
     if (decision == Decision::Split) {
         if (!info.is_pair || hand.size() != 2) {
-          
             if (info.total >= 17) {
-
                 decision = Decision::Stand;
-
-            } else {
-
+            }
+            else {
                 decision = Decision::Hit;
             }
         }
     }
 
-   
     if (decision == Decision::Double && hand.size() != 2) {
-       
         decision = Decision::Hit;
     }
 
-    
+    if (decision == Decision::Double) {
+        int bet = table.GetPlayerCurrentBet(player_index, hand_index);
+        int money = table.GetPlayerMoney(player_index);
+
+        if (money < bet) {
+            decision = Decision::Hit;
+        }
+    }
+
     switch (decision) {
-
-        case Decision::Stand: 
-            return ITable::Action::Stand;
-
-        case Decision::Hit:    
-            return ITable::Action::Hit;
-
-        case Decision::Split:  
-            return ITable::Action::Split;
-
-        case Decision::Double: 
-            return ITable::Action::Double;
-
-        default:               
-            return ITable::Action::Stand;
+    case Decision::Stand:  return ITable::Action::Stand;
+    case Decision::Hit:    return ITable::Action::Hit;
+    case Decision::Split:  return ITable::Action::Split;
+    case Decision::Double: return ITable::Action::Double;
+    default:               return ITable::Action::Stand;
     }
 }
 
@@ -607,40 +270,51 @@ int JPlayer::DecideInitialBet(const ITable& table, int player_index) {
 
     int money = table.GetPlayerMoney(player_index);
 
-    if (money <= 0) {
-        return 0;
-    }
-
     int min_bet = rules_.MinimumInitialBet();
     int max_bet = rules_.MaximumInitialBet();
 
-    int bet = money / 20;
+    if(money < min_bet) return 0;   
+    assert(min_bet <= max_bet);  
 
-    assert(bet < min_bet);
-        
-    assert(bet > max_bet);
+    int bet = min_bet;          
 
-    assert(bet > money);
+    assert(bet >= min_bet);
+    assert(bet <= max_bet);
+    assert(bet <= money);
 
     return bet;
 }
 
 
-bool JPlayer::DecideUseSafe(const ITable& table, int player_index){
+bool JPlayer::DecideUseSafe(const ITable& table, int player_index) {
+
+    ITable::Hand hand = table.GetHand(player_index, 0);
+
+    if (hand.size() != 2) {
+        return false;
+    }
+
+    HandInfo info = HandData(hand);
+
+    if (info.total != rules_.GetWinPoint()) {
+        return false;
+    }
+
     return true;
 }
+
 
 JPlayer::Decision JPlayer::GetMatCorrectDecision(HandInfo info, ITable::Card dealer_card) {
 
     Key key;
-    key.is_pair = info.is_pair;
-    key.is_soft = info.is_soft;
-    key.total = info.total;
+    key.is_pair     = info.is_pair;
+    key.is_soft     = info.is_soft;
+    key.total       = info.total;
     key.dealer_card = dealer_card.value_;
 
     auto it = strategy_table_.find(key);
 
-    if(it != strategy_table_.end()){
+    if (it != strategy_table_.end()) {
         return it->second;
     }
 

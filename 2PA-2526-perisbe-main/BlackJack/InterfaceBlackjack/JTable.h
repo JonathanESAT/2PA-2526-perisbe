@@ -1,6 +1,7 @@
 #pragma once
 #include "ITable.h"
 #include "Rules.h"
+#include <vector>
 
 
 class JTable: public ITable {
