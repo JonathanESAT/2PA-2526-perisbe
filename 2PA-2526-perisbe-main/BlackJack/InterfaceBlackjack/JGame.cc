@@ -37,11 +37,12 @@ void JGame::PlayGame() {
         table_.StartRound();
 
         JTable::Card dealer_up = table_.GetDealerCard();
-        printf("Dealer upcard: ");
-        PrintCard(dealer_up);
-        printf("\n");
+        printf("Dealer upcard: [%d-%d]\n",
+            (int)dealer_up.value_, (int)dealer_up.suit_);
 
         printf("Initial bets:\n");
+        bool any_bet = false;
+
         for (int i = 0; i < (int)players_.size(); ++i) {
             int money = table_.GetPlayerMoney(i);
             if (money <= 0) {
@@ -58,7 +59,15 @@ void JGame::PlayGame() {
                 continue;
             }
 
+            any_bet = true;
             printf("Player %d bets %d\n", i, bet);
+        }
+
+        // Nadie ha apostado: el juego termina aquí
+        if (!any_bet) {
+            printf("No player placed an initial bet. Ending game.\n");
+            printf("=============== END ROUND %d ===============\n\n", round);
+            break;
         }
 
         printf("Dealing cards...\n");
@@ -70,9 +79,9 @@ void JGame::PlayGame() {
             printf("Player %d receives:", i);
             for (int j = 0; j < 2; ++j) {
                 table_.DealCard(i, 0);
-                auto hand = table_.GetHand(i, 0);
-                auto c = hand.back();
-                PrintCard(c);
+                ITable::Hand h = table_.GetHand(i, 0);
+                const JTable::Card& c = h.back();
+                printf("[%d-%d]", (int)c.value_, (int)c.suit_);
             }
             printf("\n");
         }
