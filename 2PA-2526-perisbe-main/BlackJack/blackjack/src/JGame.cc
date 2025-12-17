@@ -35,7 +35,7 @@ void JGame::PlayGame() {
             int money = table_.GetPlayerMoney(i);
             if (money <= 0 || money < table_.GetRules().MinimumInitialBet()) {
                 disqualified_[i] = true;
-                printf("   Player %d DISQUALIFIED (insufficient funds for minimum bet)\n", i);
+                printf("Player %d DISQUALIFIED (insufficient funds for minimum bet)\n", i);
             }
         }
 
@@ -118,11 +118,11 @@ void JGame::PlayGame() {
             ITable::Result result = table_.PlayInitialBet(i, bet);
             if (result != ITable::Result::Ok) {
                 disqualified_[i] = true;
-                printf("   Player %d DISQUALIFIED for cheating (illegal bet)\n", i);
+                printf("Player %d DISQUALIFIED for cheating (illegal bet)\n", i);
                 continue;
             }
 
-            printf("   Player %d bets $%d\n", i, bet);
+            printf("Player %d bets $%d\n", i, bet);
         }
 
         // Deal initial cards
@@ -132,7 +132,7 @@ void JGame::PlayGame() {
                 continue;
             }
 
-            printf("   Player %d receives: ", i);
+            printf("Player %d receives: ", i);
 
             // Deal first card
             table_.DealCard(i, 0);
@@ -232,11 +232,11 @@ void JGame::PlayGame() {
                 if (wants_insurance == 1) {
                     ITable::Result res = table_.PlaySafeBet(i);
                     if (res == ITable::Result::Ok) {
-                        printf("   Player %d buys insurance\n", i);
+                        printf("Player %d buys insurance\n", i);
                     } else {
                         // Player tried to cheat, disqualify them
                         disqualified_[i] = true;
-                        printf("   Player %d DISQUALIFIED for cheating (illegal insurance)\n", i);
+                        printf("Player %d DISQUALIFIED for cheating (illegal insurance)\n", i);
                     }
                 }
             }
@@ -250,7 +250,7 @@ void JGame::PlayGame() {
             }
 
             int num_hands = table_.GetNumberOfHands(i);
-            // Process each hand (can be more than one if split)
+            // Process each hand 
             for (int h = 0; h < num_hands; h++) {
                 int keep_playing = 1;
                 while (keep_playing == 1) {
@@ -271,7 +271,7 @@ void JGame::PlayGame() {
                         action_name = "UNKNOWN";
                     }
 
-                    printf("   Player %d hand %d -> %s\n", i, h, action_name);
+                    printf("Player %d hand %d -> %s\n", i, h, action_name);
 
                     // Stop if player stands
                     if (action == ITable::Action::Stand) {

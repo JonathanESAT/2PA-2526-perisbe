@@ -51,6 +51,8 @@ class JTable: public ITable {
     void StartRound() override;
     RoundEndInfo FinishRound() override;
 
+    const BaseRules& GetRules() const;
+
   private:
 
     std::vector<std::vector<Hand> > hands_;             ///< hands_[player_index][hand_index]

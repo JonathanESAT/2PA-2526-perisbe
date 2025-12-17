@@ -48,7 +48,7 @@ JTable::JTable(unsigned int num_players, const BaseRules& rules)
 
     total_player_money_[i] = rules_.InitialPlayerMoney();
 
-    initial_bet_[i]   = 0;
+    initial_bet_[i] = 0;
     insurance_bet_[i] = 0;
   }
 
@@ -128,10 +128,10 @@ JTable::Result JTable::PlayInitialBet(int player_index, int money) {
 
   // Take money from player and give to dealer
   total_player_money_[player_index] -= money;
-  dealer_money_                     += money;
+  dealer_money_ += money;
 
   player_bets_[player_index][0] = money;
-  initial_bet_[player_index]    = money;
+  initial_bet_[player_index] = money;
 
   return Result::Ok;
 }
@@ -166,8 +166,8 @@ JTable::Result JTable::PlaySafeBet(int player_index) {
     if (insurance_bet_[player_index] > 0) return Result::Illegal;
 
     total_player_money_[player_index] -= safe_cost;
-    dealer_money_                     += safe_cost;
-    insurance_bet_[player_index]       = safe_cost;
+    dealer_money_ += safe_cost;
+    insurance_bet_[player_index] = safe_cost;
 
     return Result::Ok;
   }
@@ -292,7 +292,7 @@ JTable::Result JTable::ApplyPlayerAction(int player_index, int hand_index, Actio
       return Result::Ok;
 
   case Action::Hit:
-      // Check if deck is empty (shouldn't happen but check anyway)
+      // Check if deck is empty 
       if (deck_.empty()) {
         return Result::Illegal;
       }

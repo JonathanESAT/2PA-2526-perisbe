@@ -142,9 +142,9 @@ JPlayer::JPlayer(const BaseRules& rules)
 
             // Create key for this situation
             Key key;
-            key.is_pair     = r.is_pair;
-            key.is_soft     = r.is_soft;
-            key.total       = r.total;
+            key.is_pair = r.is_pair;
+            key.is_soft = r.is_soft;
+            key.total = r.total;
             key.dealer_card = static_cast<ITable::Value>(dv);
 
             strategy_table_[key] = r.decision;
@@ -182,7 +182,7 @@ JPlayer::HandInfo JPlayer::HandData(const ITable::Hand& hand) {
   HandInfo info;
   info.is_pair = false;
   info.is_soft = false;
-  info.total   = 0;
+  info.total = 0;
 
   if (hand.empty()) {
     return info;
@@ -337,9 +337,9 @@ JPlayer::Decision JPlayer::GetMatCorrectDecision(HandInfo info, ITable::Card dea
 
     // Build lookup key
     Key key;
-    key.is_pair     = info.is_pair;
-    key.is_soft     = info.is_soft;
-    key.total       = info.total;
+    key.is_pair = info.is_pair;
+    key.is_soft  = info.is_soft;
+    key.total = info.total;
     key.dealer_card = dealer_card.value_;
 
     // Find decision in table
