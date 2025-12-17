@@ -26,14 +26,6 @@ class JPlayer : public IPlayer {
     bool DecideUseSafe(const ITable& table, int player_index) override;
 
     /**
-     * @brief Calculates the value of a card.
-     *
-     * @param card The card to evaluate
-     * @return int The numerical value of the card (Ace=1, Jack/Queen/King=10)
-     */
-    int GetCardValue(ITable::Card card);
-
-    /**
      * @enum Decision
      * @brief Represents possible player decisions in strategy table.
      */
@@ -115,6 +107,14 @@ class JPlayer : public IPlayer {
     };
 
     std::unordered_map<Key, Decision, KeyHash> strategy_table_;  ///< Pre-computed strategy decisions
+
+    /**
+     * @brief Calculates the value of a card.
+     *
+     * @param card The card to evaluate
+     * @return int The numerical value of the card (Ace=1, Jack/Queen/King=10)
+     */
+    int GetCardValue(ITable::Card card);
 
     /**
      * @brief Analyzes a hand to extract key information.

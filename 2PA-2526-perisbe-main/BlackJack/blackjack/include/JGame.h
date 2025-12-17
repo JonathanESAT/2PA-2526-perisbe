@@ -25,13 +25,6 @@ class JGame : public IGame {
 
     void PlayGame() override;
 
-    /**
-     * @brief Prints a card in a readable format.
-     *
-     * @param c The card to print
-     */
-    void PrintCard(const ITable::Card& c);
-
   private:
     JTable& table_;                   ///< Reference to the game table
     std::vector<IPlayer*> players_;   ///< List of players in the game

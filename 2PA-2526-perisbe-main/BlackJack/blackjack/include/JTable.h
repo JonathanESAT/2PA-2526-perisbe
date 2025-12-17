@@ -44,51 +44,12 @@ class JTable: public ITable {
 
     void CleanTable() override;
 
-    /**
-     * @brief Fills the deck with cards according to the number of decks specified in rules.
-     */
-    void FillDeck();
-
-    /**
-     * @brief Shuffles the deck randomly.
-     */
-    void ShuffleDeck();
-
-
     Result PlaySafeBet(int player_index) override;
     Result ApplyPlayerAction(int player_index,int hand_index,Action action) override;
 
 
     void StartRound() override;
     RoundEndInfo FinishRound() override;
-
-    /**
-     * @brief Calculates the numerical value of a card.
-     *
-     * @param card The card to evaluate
-     * @return int The value (Ace=1, face cards=10, others=face value)
-     */
-    int GetCardValue(Card card);
-
-    /**
-     * @brief Calculates the total value of a hand.
-     *
-     * Automatically handles soft aces (ace as 11) when beneficial.
-     *
-     * @param hand The hand to evaluate
-     * @return int The optimal total value of the hand
-     */
-    int GetHandValue(const Hand& hand);
-
-    /**
-     * @brief Gets the game rules.
-     *
-     * @return const BaseRules& Reference to the game rules
-     */
-    const BaseRules& GetRules() const;
-
-
-
 
   private:
 
@@ -126,7 +87,32 @@ class JTable: public ITable {
      */
     HandInfo HandData(const Hand& hand);
 
+    /**
+     * @brief Calculates the numerical value of a card.
+     *
+     * @param card The card to evaluate
+     * @return int The value (Ace=1, face cards=10, others=face value)
+     */
+    int GetCardValue(Card card);
 
-    
+    /**
+     * @brief Calculates the total value of a hand.
+     *
+     * Automatically handles soft aces (ace as 11) when beneficial.
+     *
+     * @param hand The hand to evaluate
+     * @return int The optimal total value of the hand
+     */
+    int GetHandValue(const Hand& hand);
+
+    /**
+     * @brief Fills the deck with cards according to the number of decks specified in rules.
+     */
+    void FillDeck();
+
+    /**
+     * @brief Shuffles the deck randomly.
+     */
+    void ShuffleDeck();
 };
 
